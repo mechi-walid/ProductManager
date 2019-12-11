@@ -64,16 +64,16 @@ namespace WebApiImmoblier1.Controllers
         }
         [HttpGet]
         [Route("{TypeClient}", Name = "GetClient")]
-        public IActionResult GetClientByType(TypeClient typeClient)
-        {
-            var res = _clientServices.GetClientByType(typeClient);
+        //public IActionResult GetClientByType(TypeClient typeClient)
+        //{
+        //   // var res = _clientServices.GetClientByType(typeClient);
 
-            if (res == null)
-            {
-                return NotFound($"Il n'existe pas un client avec de type {typeClient}");
-            }
-            return Ok(new { data = res });
-        }
+        //    //if (res == null)
+        //    //{
+        //    //    return NotFound($"Il n'existe pas un client avec de type {typeClient}");
+        //    //}
+        //    //return Ok(new { data = res });
+        //}
         [HttpGet]
         [Route("{IdClient}", Name = "UpdateClient")]
         public async Task<IActionResult> UpdateClientById([FromBody]Client client, Guid idClient)
