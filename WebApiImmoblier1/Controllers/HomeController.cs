@@ -98,6 +98,22 @@ namespace WebApiImmoblier1.Controllers
         }
 
 
+        public async Task<IActionResult> UpdateAgentById1([FromBody]Agent agent, Guid idAgent)
+        {
+            var res = await _agentServices.GetAgentByIdAsync(idAgent);
+
+            if (res == null)
+            {
+                return NotFound($"Il n'existe pas un agent avec l'id {idAgent}");
+            }
+            _agentServices.UpdateAgent(agent, idAgent);
+            if (await _agentServices.SaveChangeAsync())
+            {
+                return Ok("Agent modifié avec succès");
+            }
+            return BadRequest("Modification échoué...");
+        }
+
     }
 }
 
